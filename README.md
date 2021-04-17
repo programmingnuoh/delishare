@@ -1,24 +1,58 @@
-# README
+# users table
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| column             | type     | options                  |
+| ------------------ | -------- | ------------------------ |
+| name               | string   | null: false              |
+| introduction       | text     |                          |
+| email              | string   | null: false,unique: true |
+| encrypted_password | string   | null: false              |
 
-Things you may want to cover:
+## Associations
+--has_many: delis
 
-* Ruby version
+# categories table
 
-* System dependencies
+| column             | type     | options                  |
+| ------------------ | -------- | ------------------------ |
+| name               | string   | null: false              |
 
-* Configuration
+## Associations
 
-* Database creation
+--has_many: delis
 
-* Database initialization
+# delis table
 
-* How to run the test suite
+| column         | type       | options                       |
+| -------------- | ---------- | ----------------------------- |
+| name           | string     | null: false                   |
+| text           | text       | null: false                   |
+| supermarket_id | integer    | null: false                   |
+| user_id        | references | null: false,foreign_key: true |
+| categories_id  | references | null: false,foreign_key: true | 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Associations
+--belongs_to: user
+--belongs_to: category
+--has_many: deli_tag_relations
+--has_many: tags, through: deli_tag_relations
 
-* ...
+# tags table
+| column   | type       | options                       |
+| -------- | ---------- | ----------------------------- |
+| name     | string     | null: false, uniqueness: true |
+
+## Associations
+--has_many: deli_tags_relations
+--has_many: delis, through: deli_tag_relations
+
+# deli_tag_relations table
+| column  | type       | options                       |
+| ------- | ---------- | ----------------------------- |
+| deli_id | references | null: false,foreign_key: true |
+| tag_id  | references | null: false,foreign_key: true |
+
+## Associations
+--belongs_to: deli
+--belongs_to: tag
+
