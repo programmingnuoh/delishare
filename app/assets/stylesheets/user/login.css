@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-image: url('sign_in.jpg');
     background-size: cover;
 }
@@ -15,14 +16,14 @@
 }
 
 .login-html{
-    margin-top: 80px;
+    margin: 50px;
 }
 
 .sign-in-htm{
     padding: auto;
 }
 
-.form-group{
+.form-group-login{
     margin: 18px auto 60px;
     padding: 10px 50px 0;
 }

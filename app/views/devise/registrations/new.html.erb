@@ -4,26 +4,36 @@
 <%= form_with model:@user, url: user_session_path, class: 'registration-main', local: true do |f| %>
 <div class="login-wrap">
   <div class="login-html">
-    <label for="tab-2" class="tab">Sign Up</label>
+    <div class="page-title">
+      <label for="tab-2" class="tab">Sign Up</label>
+    </div>
     <div class="login-form">
       <div class="sign-up-htm">
-        <div class="group">
-          <label class="label">Username</label>
-          <%= f.text_area :name, class: "input-default", id:"name", placeholder: "" %>
+        <div class="form-group-register">
+          <div class="title">
+            <label class="label">Username</label>
+          </div>
+          <%= f.text_field :name, class: "input-default", id:"name", placeholder: "" %>
         </div>
-        <div class="group">
-          <label class="label">Email</label>
+        <div class="form-group-register">
+          <div class="title">
+            <label class="label">Email</label>
+          </div>
           <%= f.email_field :email, class: "input-default", id:"email", placeholder: "PC/携帯どちらでも可", autofocus: true %>
         </div>
-        <div class="group">
-          <label class="label">Password</label>
+        <div class="form-group-register">
+          <div class="title">
+            <label class="label">Password</label>
+          </div>
           <%= f.password_field :password, class:"input-default", id:"password", placeholder: "英数字含めて設定してください" %>
         </div>
-        <div class="group">
+        <div class="form-group-register">
+        <div class="title">
           <label class="label">Repeat Password</label>
+        </div>
           <%= f.password_field :password_confirmation, class: "input-default", id: "password_confirmation", placeholder: "同じパスワードを入力してください" %>
         </div>
-        <div class="group">
+        <div class="form-group-register">
           <%= f.submit "Sign UP", class:"register-btn" %>
         </div>
         <div class="hr"></div>
