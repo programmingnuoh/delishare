@@ -1,0 +1,19 @@
+.form-group-register{
+    margin: 10px auto 10px;
+    padding: 10px 50px 0;
+}
+
+.sign-up-htm{
+    padding: auto;
+}
+
+.register-btn{
+    width: 240px;
+    height: 48px;
+    background-color: #f7b021;
+    margin: 0 auto;
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    border: none;
+}
