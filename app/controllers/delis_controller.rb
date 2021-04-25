@@ -1,0 +1,2 @@
+class DelisController < ApplicationController
+end

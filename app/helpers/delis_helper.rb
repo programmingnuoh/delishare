@@ -1,0 +1,2 @@
+module DelisHelper
+end
