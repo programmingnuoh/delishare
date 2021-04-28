@@ -1,7 +1,7 @@
 class DelisController < ApplicationController
 
   def index
-      
+    @delis = Deli.all
   end
 
   def new
