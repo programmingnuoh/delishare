@@ -8,6 +8,6 @@ class Supermarket < ActiveHash::Base
     {id:16,name:'--------'},{id:17,name:'成城石井'},{id:18,name:'東武ストア'},
     {id:19,name:'紀ノ国屋'},{id:20,name:'--------'},{id:21,name:'セブン・イレブン'},
     {id:22,name:'ファミリーマート'},{id:23,name:'ローソン'},{id:24,name:'ミニストップ'},
-    {id:25,name:'デイリーヤマザキ'}
+    {id:25,name:'デイリーヤマザキ'},{id:26,name:'--------'},{id:27,name:'その他'}
   ]
 end
