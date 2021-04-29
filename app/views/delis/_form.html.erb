@@ -10,7 +10,11 @@
   </div>
 
   <div class="field">
-    <%# <%= f.collection_select (:supermarket_id, Supermarket.all, :id, :name, {class:"select-box", id:"deli-supermarket"}) %>
+    <%# <%= f.collection_select (:category_id, Category.all, :id, :name, {class:"select-box", id:"deli-category"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:supermarket_id, Supermarket.all, :id, :name, {prompt:'--------'},{class:"select-box", id:"deli-supermarket"}) %>
   </div>
 
   <div class="field">

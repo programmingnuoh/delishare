@@ -9,5 +9,4 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, length: {minimum: 8}
 
   has_many :delis
-  has_one_attaced :image
 end
