@@ -7,8 +7,10 @@
       <%= "こんにちは" %>
       <%= link_to "#{current_user.name}さん", root_path, class: :greeting__link %>
     </div>
+    <div class="new-deli">
+      <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
+    </div>
   <% end %>
-  <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
     <div class="card__wrapper">
       <%# <%= render partial:"prototype", collection: @prototypes %>
     </div>

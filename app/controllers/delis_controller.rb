@@ -1,5 +1,6 @@
 class DelisController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @delis = Deli.all
   end
