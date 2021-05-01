@@ -1,0 +1,45 @@
+.deli-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.card{
+    width: calc((100% - 100px) / 3);
+}
+
+.card-body{
+    display: flex;
+
+}
+
+.deli-user-icon{
+    background-color: #a2cd39;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+.deli-image{
+    width: 25vw;
+    height: auto;
+}
+
+.deli-summary{
+    padding: 10px;
+}
+
+.deli-little-summary{
+    display: flex;
+    justify-content: right;
+}
+
+
+.deli-name{
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}

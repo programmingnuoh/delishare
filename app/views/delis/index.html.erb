@@ -4,15 +4,15 @@
   <div class="inner">
   <% if user_signed_in? %>
     <div class="greeting">
-      <%= "こんにちは" %>
+      <%= "※仮表示こんにちは" %>
       <%= link_to "#{current_user.name}さん", root_path, class: :greeting__link %>
     </div>
     <div class="new-deli">
       <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
     </div>
   <% end %>
-    <div class="card__wrapper">
-      <%# <%= render partial:"prototype", collection: @prototypes %>
+    <div class="deli-wrapper">
+      <%= render partial:"deli", collection: @delis %>
     </div>
   </div>
 </main>
