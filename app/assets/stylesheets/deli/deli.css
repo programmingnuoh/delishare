@@ -4,16 +4,22 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    padding: 50px;
+    width: 100%;
 }
 
-.card{
+.deli-list{
     width: calc((100% - 100px) / 3);
+    margin: 20px auto;
+    padding: 10px;
 }
 
 .card-body{
     display: flex;
+}
 
+.deli-image{
+    width: 33vh;
+    height: 33vh;
 }
 
 .deli-user-icon{
@@ -23,23 +29,26 @@
     text-align: center;
 }
 
-.deli-image{
-    width: 25vw;
-    height: auto;
-}
-
 .deli-summary{
     padding: 10px;
 }
-
-.deli-little-summary{
-    display: flex;
-    justify-content: right;
-}
-
 
 .deli-name{
     font-size: 20px;
     text-decoration: none;
     font-weight: bold;
+    color: black;
+}
+
+.deli-little-summary{
+    width: 150%;
+}
+
+.deli-user{
+    
+}
+
+.deli-category{
+    display: block;
+    text-align: right;
 }

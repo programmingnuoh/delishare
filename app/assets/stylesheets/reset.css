@@ -54,6 +54,7 @@ html{
   fieldset,
   img {
     border:0;
+    max-width: 100%;
   }
   /*
     TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...

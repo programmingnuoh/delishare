@@ -1,16 +1,20 @@
 <div class="card">
-  <%= link_to image_tag( deli.image, class:"deli-image" ), deli_path(deli.id)%>
+  <div class="deli-image-cover">
+    <%= link_to image_tag( deli.image, class:"deli-image" ), deli_path(deli.id)%>
+  </div>
   <div class="card-body">
     <div class="deli-user-icon">icon</div>
     <div class="deli-summary">
       <%= link_to deli.name, deli_path(deli.id), class:"deli-name" %>
-      <div class="deli-little-summary">
+      <%# <div class="deli-little-summary"> %>
         <p class="deli-user">
           <%= deli.user.name %>
           <%# <%= link_to deli.user, user_path(user.id), class:"deli-user-name" %>
         </p>
-        <%= deli.category.name %>
-      </div>
+        <p class="deli-category">
+          <%= deli.category.name %>
+        </p>
+      <%# </div> %>
     </div>
   </div>
 </div>

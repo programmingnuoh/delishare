@@ -11,9 +11,13 @@
       <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
     </div>
   <% end %>
-    <div class="deli-wrapper">
-      <%= render partial:"deli", collection: @delis %>
-    </div>
+    <ul class="deli-wrapper">
+    <% @delis.each do |deli| %>  
+      <li class="deli-list">
+        <%= render partial:"deli", locals: {deli:deli} %>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </main>
 
