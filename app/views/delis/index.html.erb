@@ -1,15 +1,24 @@
-
+<%= render "shared/header" %>
 
 <main class="main">
   <div class="inner">
   <% if user_signed_in? %>
     <div class="greeting">
-      <%= "こんにちは" %>
+      <%= "※仮表示こんにちは" %>
       <%= link_to "#{current_user.name}さん", root_path, class: :greeting__link %>
     </div>
-  <% end %>
-    <div class="card__wrapper">
-      <%# <%= render partial:"prototype", collection: @prototypes %>
+    <div class="new-deli">
+      <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
     </div>
+  <% end %>
+    <ul class="deli-wrapper">
+    <% @delis.each do |deli| %>  
+      <li class="deli-list">
+        <%= render partial:"deli", locals: {deli:deli} %>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </main>
+
+<%= render "shared/footer" %>

@@ -1,0 +1,41 @@
+.deli-new-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.field{
+    margin: 30px;
+    display: block;
+}
+
+.post-label{
+    padding-bottom: 10px;
+}
+
+.deli-form{
+    border:double 5px #f7b021 ;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.categories-radio{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.actions{
+    display: block;
+    text-align: center;
+    margin: 30px 0 ;
+}
+
+.form__btn{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    background-color: #f7b021;
+    color: #383838;
+}

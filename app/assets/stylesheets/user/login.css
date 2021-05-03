@@ -6,6 +6,7 @@
     align-items: center;
     background-image: url('sign_in.jpg');
     background-size: cover;
+    
 }
 
 .login-wrap{
@@ -63,4 +64,5 @@
     cursor: pointer;
     display: block;
     border: none;
+    color: #383838;
 }
