@@ -1,5 +1,6 @@
 class DelisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :deli_find, only: [:show, :edit, :update]
   
   def index
     @delis = Deli.all
@@ -19,15 +20,20 @@ class DelisController < ApplicationController
   end
 
   def edit
-      
+    if current_user.id != @deli.user_id
+      redirect_to deli_path(@deli.id)
+    end
   end
 
   def update
-      
+    if @deli.update(deli_params)
+      redirect_to deli_path(@deli.id)
+    else
+      render :edit
+    end
   end
 
   def show
-    @deli = Deli.find(params[:id])
   end
 
   def destroy
@@ -37,5 +43,9 @@ class DelisController < ApplicationController
   private
   def deli_params
     params.require(:deli).permit(:name, :text, :category_id, :supermarket_id, :image).merge(user_id: current_user.id)
+  end
+
+  def deli_find
+    @deli = Deli.find(params[:id])    
   end
 end
