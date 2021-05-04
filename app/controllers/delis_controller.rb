@@ -27,7 +27,7 @@ class DelisController < ApplicationController
   end
 
   def show
-      
+    @deli = Deli.find(params[:id])
   end
 
   def destroy
