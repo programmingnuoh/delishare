@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+
+<div class="deli-show">
+  <div class="deli-box">
+  <div class="deli-show-upper">
+    <p class="deli-show-category">
+      <%= @deli.category.name %>
+    </p>
+    <% if user_signed_in? %>
+      <div class="deli-edit">
+        <%= link_to "編集", edit_deli_path(@deli.id), method: :get ,class:"edit-list" %>
+        <%= link_to "削除", deli_path(@deli.id), method: :delete ,class:"delete-list" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="deli-image-content">
+    <%= image_tag @deli.image, class:"deli-show-image" %>
+  </div>
+  <div class="deli-post-info">
+    <h2 class="deli-show-name">
+      <%=  @deli.name %>
+    </h2>
+    <div class="deli-post-user">
+      <div class="deli-show-icon">
+        <%= link_to "icon", user_path(@deli.user.id) %>
+      </div>
+      <%= link_to @deli.user.name,user_path(@deli.user.id), class:"deli-show-user" %>
+    </div>
+  </div>
+<span class="deli-show-text"><%= @deli.text %></span>
+<span class="deli-show-supermarket">購入場所：<%= @deli.supermarket.name %></span>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

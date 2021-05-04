@@ -1,0 +1,102 @@
+.deli-show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deli-box{
+    width: 60vw;
+    margin: 30px auto 60px;
+}
+
+.deli-show-image,.deli-post-info,
+.deli-show-text{
+    margin: 15px;
+}
+
+.deli-show-text,.deli-show-supermarket{
+    padding-left: 30px;
+}
+
+.deli-show-upper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-list,.delete-list{
+    margin: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #383838;
+    border-radius: 7px;
+}
+
+.edit-list{
+    background-color: #ffe23f;
+}
+
+.delete-list{
+    background-color: #f7b021;
+}
+
+.deli-show-category{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #a2cb39;
+    margin-left: 35px;
+    border-radius: 7px;
+}
+
+.deli-show-image{
+    height: 40vh;
+    width: 60vw;
+    min-height: 500px;
+    background-color: #e7f4ef;
+    object-fit: contain;
+}
+
+
+.deli-post-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deli-show-name{
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.deli-show-icon{
+    width: 100px;
+    height: 100px;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+.deli-post-user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.deli-show-user{
+    font-size: 20px;
+    margin: 10px;
+    text-decoration: none;
+    padding-left: 20px;
+    color: black;
+}
+
+.deli-show-text{
+    display: block;
+    font-size: 18px;
+    text-decoration: underline 3px #a2cb39;
+}
+
+.deli-show-supermarket{
+    display: block;
+    font-size: 18px;
+}
