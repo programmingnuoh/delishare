@@ -1,6 +1,6 @@
 class DelisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :deli_find, only: [:show, :edit, :update, :destroy]
+  before_action :deli_find, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :user_check, only: [:edit, :destroy]
   
   def index
@@ -33,6 +33,9 @@ class DelisController < ApplicationController
   end
 
   def show
+  end
+
+  def confirm
   end
 
   def destroy
