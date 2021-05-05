@@ -1,0 +1,11 @@
+<%= render "shared/header" %>
+
+<div class="delete-form">
+    <h2 class="confirm-message">投稿を削除しますか？</h2>
+  <div class="select-button">
+    <%= link_to "削除する", deli_path(@deli.id), method: :delete, class:"delete-path" %>
+    <%= link_to "戻る", deli_path(@deli.id), class:"back-path" %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

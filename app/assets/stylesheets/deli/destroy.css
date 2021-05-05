@@ -1,0 +1,26 @@
+.destroy-complete{
+    margin: 60px auto;
+}
+
+.complete-message,.back-root{
+    text-align: center;
+}
+
+.complete-message{
+    font-size: 32px;
+}
+
+.root-link{
+    width: 50%;
+    margin: 70px auto 90px;
+    text-align: center;
+}
+
+.back-root{
+    margin: 0 20px;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #383838;
+    background-color: #a2cb39;
+}

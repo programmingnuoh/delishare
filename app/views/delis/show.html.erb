@@ -9,7 +9,7 @@
     <% if user_signed_in? && current_user.id == @deli.user_id %>
       <div class="deli-edit">
         <%= link_to "編集", edit_deli_path(@deli.id), method: :get ,class:"edit-list" %>
-        <%= link_to "削除", deli_path(@deli.id), method: :delete ,class:"delete-list" %>
+        <%= link_to "削除", confirm_deli_path(@deli.id),method: :get, class:"confirm-list" %>
       </div>
     <% end %>
   </div>

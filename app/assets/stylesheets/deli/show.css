@@ -24,7 +24,7 @@
     align-items: center;
 }
 
-.edit-list,.delete-list{
+.edit-list,.confirm-list{
     margin: 10px;
     padding: 10px 15px;
     text-decoration: none;
@@ -36,7 +36,7 @@
     background-color: #ffe23f;
 }
 
-.delete-list{
+.confirm-list{
     background-color: #f7b021;
 }
 
