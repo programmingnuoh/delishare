@@ -1,6 +1,7 @@
 class DelisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :deli_find, only: [:show, :edit, :update]
+  before_action :deli_find, only: [:show, :edit, :update, :destroy]
+  before_action :user_check, only: [:edit, :destroy]
   
   def index
     @delis = Deli.all
@@ -20,9 +21,7 @@ class DelisController < ApplicationController
   end
 
   def edit
-    if current_user.id != @deli.user_id
-      redirect_to deli_path(@deli.id)
-    end
+
   end
 
   def update
@@ -37,7 +36,8 @@ class DelisController < ApplicationController
   end
 
   def destroy
-      
+    @deli.destroy
+    redirect_to root_path
   end
 
   private
@@ -47,5 +47,11 @@ class DelisController < ApplicationController
 
   def deli_find
     @deli = Deli.find(params[:id])    
+  end
+
+  def user_check
+    if current_user.id != @deli.user_id
+      redirect_to deli_path(@deli.id)
+    end
   end
 end
