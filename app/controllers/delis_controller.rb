@@ -40,7 +40,6 @@ class DelisController < ApplicationController
 
   def destroy
     @deli.destroy
-    redirect_to root_path
   end
 
   private
