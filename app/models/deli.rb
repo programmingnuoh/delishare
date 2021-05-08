@@ -4,6 +4,7 @@ class Deli < ApplicationRecord
     validates :name
     validates :text
     validates :supermarket_id
+    validates :image
   end
 
   belongs_to :user
