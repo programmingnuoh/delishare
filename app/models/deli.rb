@@ -1,6 +1,5 @@
 class Deli < ApplicationRecord
-
-  with_options presence:true do
+  with_options presence: true do
     validates :name
     validates :text
     validates :supermarket_id
