@@ -1,7 +1,7 @@
 class DelisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :deli_find, only: [:show, :edit, :update, :destroy, :confirm]
-  before_action :user_check, only: [:edit, :destroy]
+  before_action :user_check, only: [:edit, :destroy, :confirm]
 
   def index
     @delis = Deli.all

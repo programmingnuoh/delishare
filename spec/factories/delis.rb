@@ -6,7 +6,7 @@ FactoryBot.define do
     association :category
     association :user
     after(:build) do |deli|
-      deli.image.attach(io: File.open("#{Rails.root}/public/testimage.jpg"), filename:'testimage.jpg')
+      deli.image.attach(io: File.open('public/images/testimage.jpg'), filename: 'testimage.jpg')
     end
   end
 end
