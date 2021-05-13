@@ -3,23 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Delis', type: :system do
   before do
     @user = FactoryBot.create(:user)
-    # @deli = FactoryBot.build(:deli, user:@user, category_id: 2)
+    # @deli = FactoryBot.build(:deli, user_id:@user.id, category_id: 1)
     # @user = User.create(name:'sample', email:"aaa@yahoo.com", password:"sample00", password_confirmation:'sample00')
     # @deli = Deli.new(name:'test', text:'test', category_id:2, supermarket_id:1, user_id:1)
-  end
-
-  it "ラジオボタンが選択されているか" do
-    visit new_user_session_path
-    sleep(1)
-    fill_in 'user[email]', with: @user.email
-    fill_in 'user[password]', with: @user.password
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
-    expect(page).to have_content('New Deli')
-    visit new_deli_path
-    expect(current_path).to eq(new_deli_path)
-    choose 'deli_category_id_1'
-    expect(page).to have_checked_field('惣菜')
   end
 
   context '投稿ができる時' do
@@ -30,7 +16,7 @@ RSpec.describe 'Delis', type: :system do
       expect(current_path).to eq(new_deli_path)
       fill_in 'deli[name]', with: 'test'
       fill_in 'deli[text]', with: 'test'
-      choose 'deli_category_id_1'
+      choose ('deli_category_id_1')
       select 'ヤオコー', from: 'deli[supermarket_id]'
       image_path = Rails.root.join('public/images/testimage.jpg')
       attach_file('deli[image]', image_path, make_visible: true)
