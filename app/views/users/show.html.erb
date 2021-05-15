@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+  <div class="user-show">
+    <div class="user-detail">
+      <div class="user-names">
+        <div class="user-show-names">
+          <div class="deli-show-icon">icon</div>
+          <p class="user-show-name"><%= @user.name %></p>
+        </div>
+        <%= link_to "プロフィールを編集", "#", class:"edit-user" %>
+      </div>
+      <p class="user-introduction">
+      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
+      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
+      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
+      </p>
+      <%# <%= @user.introduction %> 
+    </div>
+    <ul class="deli-wrapper">
+      <% @delis.each do |deli| %>  
+        <li class="deli-list">
+          <%= render partial:"delis/deli", locals: {deli:deli} %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<%= render "shared/footer" %>
