@@ -8,7 +8,7 @@
       <%= link_to "#{current_user.name}さん", user_path(current_user), class: :greeting__link %>
     </div>
     <div class="new-deli">
-      <%= link_to "New Deli", new_deli_path, class: :nav__btn %>
+      <%= link_to "New Deli", new_deli_path, method: :get, class: :nav__btn %>
     </div>
   <% end %>
     <ul class="deli-wrapper">
