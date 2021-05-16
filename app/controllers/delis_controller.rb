@@ -13,7 +13,7 @@ class DelisController < ApplicationController
 
   def create
     @deli = Deli.new(deli_params)
-    # binding.pry
+    binding.pry
     if @deli.save
       redirect_to root_path
     else

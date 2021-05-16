@@ -16,7 +16,7 @@ RSpec.describe 'Delis', type: :system do
       expect(current_path).to eq(new_deli_path)
       fill_in 'deli[name]', with: 'test'
       fill_in 'deli[text]', with: 'test'
-      choose ('deli_category_id_1')
+      choose 'アレンジレシピ'
       select 'ヤオコー', from: 'deli[supermarket_id]'
       image_path = Rails.root.join('public/images/testimage.jpg')
       attach_file('deli[image]', image_path, make_visible: true)
@@ -55,9 +55,9 @@ RSpec.describe '投稿編集', type: :system do
       expect(
         find('#deli_text.deli-form').value
       ).to eq @deli1.text
-      fill_in 'deli[name]', with: 'test+test'
       fill_in 'deli[name]', with: 'test+test+test'
-      choose 'deli_category_id_2'
+      fill_in 'deli[name]', with: 'test+test+test'
+      choose 'アレンジレシピ'
       select 'ユニー', from: 'deli[supermarket_id]'
       expect{
         find('input[name="commit"]').click
