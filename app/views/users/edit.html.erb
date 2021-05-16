@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<div class="user-edit-page">
+  <%= form_with model:@user, local:true do |f| %>
+    <div class="user-edit-field">
+      <div class="user-image-field">
+        <%= f.label :image %>
+      </div>
+      <%= f.file_field :image %>
+    </div>
+    <div class="user-edit-field">
+      <div class="user-name-label">
+        <%= f.label :name, "ユーザー名" %>
+      </div>
+      <%= f.text_field :name, class:"user-edit-form" %>
+    </div>
+    <div class="user-edit-field">
+      <div class="user-introduction-field">
+        <%= f.label :introduction, "自己紹介" %>
+      </div>
+      <%= f.text_area :introduction, class:"user-edit-form-introduction" %>
+    </div>      
+
+    <div class="actions">
+      <%= f.submit "保存する", class:"form__btn"  %>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>

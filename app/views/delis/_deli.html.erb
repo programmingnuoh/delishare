@@ -1,7 +1,11 @@
 <%# <div class="card"> %>
   <%= link_to image_tag( deli.image, class:"deli-image" ), deli_path(deli.id)%>
   <div class="card-body">
-    <div class="deli-user-icon">icon</div>
+    <% if deli.user.image? %>
+      <div class="deli-user-icon"><%= image_tag deli.user.image.url %></div>
+    <% else %>
+      <div class="deli-user-icon">icon</div>
+    <% end %>
     <div class="deli-summary">
       <%= link_to deli.name, deli_path(deli.id), class:"deli-name" %>
       <div class="deli-little-summary">

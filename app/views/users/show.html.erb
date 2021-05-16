@@ -3,17 +3,20 @@
     <div class="user-detail">
       <div class="user-names">
         <div class="user-show-names">
-          <div class="deli-show-icon">icon</div>
+          <% if @user.image? %>
+            <div class="deli-show-icon"><%= image_tag @user.image.url %></div>
+          <% else %>
+            <div class="deli-show-icon">icon</div>
+          <% end %>
           <p class="user-show-name"><%= @user.name %></p>
         </div>
-        <%= link_to "プロフィールを編集", "#", class:"edit-user" %>
+        <% if current_user.id == @user.id %>
+          <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"edit-user" %>
+        <% end %>
       </div>
       <p class="user-introduction">
-      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
-      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
-      ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文ユーザーの紹介文
-      </p>
-      <%# <%= @user.introduction %> 
+        <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+      </p> 
     </div>
     <ul class="deli-wrapper">
       <% @delis.each do |deli| %>  

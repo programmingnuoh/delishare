@@ -32,4 +32,6 @@
 
 .user-introduction{
     margin-top: 30px;
+    padding: 0 30px;
+    text-decoration: underline 3px #a2cb39;
 }
