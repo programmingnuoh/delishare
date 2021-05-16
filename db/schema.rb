@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_04_28_133713) do
   end
 
   create_table "delis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.text "text", null: false
     t.integer "supermarket_id", null: false
     t.bigint "user_id", null: false
