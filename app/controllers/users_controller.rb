@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :user_find, only:[:show, :edit]
-  before_action :user_check, only:[:edit, :update]
+  before_action :user_find, only:[:show, :edit, :update]
+  before_action :user_check, only:[:edit]
   
   def show
     @delis = @user.delis
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end

@@ -1,0 +1,21 @@
+.user-edit-page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.user-edit-field{
+    width: 60vw;
+}
+
+.user-edit-form,.user-edit-form-introduction{
+    border:double 5px #f7b021 ;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.user-edit-form-introduction{
+   height: 200px;
+}
