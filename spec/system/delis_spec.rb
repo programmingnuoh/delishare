@@ -21,12 +21,11 @@ RSpec.describe 'Delis', type: :system do
       image_path = Rails.root.join('public/images/testimage.jpg')
       attach_file('deli[image]', image_path, make_visible: true)
       
-      # expect {
+      expect {
         find('input[name="commit"]').click
-      # }.to change { Deli.count }.by(1)
-      # binding.pry
+      }.to change { Deli.count }.by(1)
       expect(current_path).to eq(root_path)
-      expect(page).to have_content(@deli.name)
+      expect(page).to have_content('test')
     end
   end
 
