@@ -21,9 +21,15 @@
       <%=  @deli.name %>
     </h2>
     <div class="deli-post-user">
-      <div class="deli-show-icon">
-        <%= link_to "icon", user_path(@deli.user.id) %>
-      </div>
+      <% if @deli.user.image? %>
+        <div class="deli-show-icon">
+          <%= link_to image_tag(@deli.user.image.url), user_path(@deli.user.id) %>
+        </div>
+      <% else %>
+        <div class="deli-show-icon">
+          <%= link_to "icon", user_path(@deli.user.id) %>
+        </div>
+      <% end %>
       <%= link_to @deli.user.name,user_path(@deli.user.id), class:"deli-show-user" %>
     </div>
   </div>

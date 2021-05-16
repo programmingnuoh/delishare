@@ -3,6 +3,12 @@
 <div class="user-edit-page">
   <%= form_with model:@user, local:true do |f| %>
     <div class="user-edit-field">
+      <div class="user-image-field">
+        <%= f.label :image %>
+      </div>
+      <%= f.file_field :image %>
+    </div>
+    <div class="user-edit-field">
       <div class="user-name-label">
         <%= f.label :name, "ユーザー名" %>
       </div>
