@@ -20,7 +20,7 @@ RSpec.describe "Delis", type: :request do
 
     it 'indexアクションにリクエストするとレスポンスに投稿済みの画像が存在する' do
       get root_path
-      expect(page).to have_selector(@deli.image)
+      expect(response.body).to include('img')
     end
 
     it 'indexアクションにリクエストするとレスポンスにカテゴリー名が存在する' do
