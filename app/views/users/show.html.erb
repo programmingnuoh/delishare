@@ -14,9 +14,11 @@
           <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"edit-user" %>
         <% end %>
       </div>
-      <p class="user-introduction">
-        <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
-      </p> 
+      <% if @user.introduction? %>
+        <p class="user-introduction">
+          <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+        </p>
+      <% end %> 
     </div>
     <ul class="deli-wrapper">
       <% @delis.each do |deli| %>  
