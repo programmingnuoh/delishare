@@ -68,10 +68,25 @@
     top: 5px;
     background-color: #a2cb39;
     border-radius: 10px;
+    cursor: default;
 }
 
 .hidden-pulldown{
     display: none;
+    position: absolute;
+    width: 300px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(245,245,245,0.7);
+    border-radius: 10px;
+}
+
+.pulldown-form{
+    margin: 10px;
+}
+
+.label-pulldown{
+    margin-right: 12px;
 }
 
 .search-btn{
