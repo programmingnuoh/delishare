@@ -1,5 +1,5 @@
 class DelisController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :deli_find, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :user_check, only: [:edit, :destroy, :confirm]
 
@@ -39,6 +39,10 @@ class DelisController < ApplicationController
 
   def destroy
     @deli.destroy
+  end
+
+  def search
+    @delis = Deli.search(params[:keyword])
   end
 
   private
