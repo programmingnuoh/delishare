@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url('sign_in.jpg'); */
+    background-image: url('sign_in.jpg');
     background-size: cover;
     
 }

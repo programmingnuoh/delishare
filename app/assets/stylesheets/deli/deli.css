@@ -58,3 +58,10 @@
     text-align: center;
     background-color: darkturquoise;
 }
+
+.search-title{
+    font-size: 28px;
+    text-align: center;
+    margin: 20px auto 10px;
+    text-decoration: underline 3px #a2cb39;
+}

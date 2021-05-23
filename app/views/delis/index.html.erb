@@ -3,10 +3,6 @@
 <main class="main">
   <div class="inner">
   <% if user_signed_in? %>
-    <div class="greeting">
-      <%= "※仮表示こんにちは" %>
-      <%= link_to "#{current_user.name}さん", user_path(current_user), class: :greeting__link %>
-    </div>
     <div class="new-deli">
       <%= link_to "New Deli", new_deli_path, method: :get, class: :nav__btn %>
     </div>
