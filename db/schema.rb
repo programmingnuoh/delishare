@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_133713) do
+ActiveRecord::Schema.define(version: 2021_05_23_133020) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2021_04_28_133713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "deli_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "deli_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deli_id"], name: "index_deli_tag_relations_on_deli_id"
+    t.index ["tag_id"], name: "index_deli_tag_relations_on_tag_id"
+  end
+
   create_table "delis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "text", null: false
@@ -49,6 +58,12 @@ ActiveRecord::Schema.define(version: 2021_04_28_133713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_delis_on_category_id"
     t.index ["user_id"], name: "index_delis_on_user_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tagname", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_04_28_133713) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "deli_tag_relations", "delis"
+  add_foreign_key "deli_tag_relations", "tags"
   add_foreign_key "delis", "categories"
   add_foreign_key "delis", "users"
 end
