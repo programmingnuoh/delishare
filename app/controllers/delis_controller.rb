@@ -5,7 +5,7 @@ class DelisController < ApplicationController
   # before_action :search_deli
 
   def index
-    @delis = Deli.all
+    @delis = Deli.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -42,11 +42,6 @@ class DelisController < ApplicationController
     @deli.destroy
   end
 
-  # def search
-  #   @delis = Deli.search(params[:keyword])
-  #   @results = @q.result.(distinct: true)
-  # end
-
   private
 
   def deli_params
@@ -60,12 +55,4 @@ class DelisController < ApplicationController
   def user_check
     redirect_to deli_path(@deli.id) if current_user.id != @deli.user_id
   end
-
-  # def search_deli
-  #   @q = Deli.ransack(params[:q]) 
-  # end
-
-  # def search_params
-  #   params.require(:q).permit!
-  # end
 end
