@@ -1,9 +1,20 @@
 <header class='top-page-header'>
   <%= link_to image_tag("オリジナルアプリロゴ.png", class:"app-icon"), root_path %>
   <div class='nav'>
+    <div class="search-field">
+      <%= search_form_for @search, url: search_delis_path, class: "search-form" do |f| %>
+      <%= f.text_field :name_cont, placeholder: "キーワード", class: "search-keyword" %>
+        <div class="search-pulldown">▼</div>
+      <ul class="hidden-pulldown">
+        <li><%= f.collection_select :category_id_eq, @categories, :id, :name, include_blank: '指定なし' %>
+        <li><%= f.collection_select :supermarket_id_eq, @supermarkets, :id, :name, include_blank: '指定なし' %>
+      </ul>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+    </div>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %> </li>
+        <li><%= link_to 'マイページ', user_path(current_user), class: "user-name" %> </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
