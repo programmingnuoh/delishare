@@ -9,11 +9,11 @@ class DelisController < ApplicationController
   end
 
   def new
-    @deli = Deli.new
+    @deli = DelisTag.new
   end
 
   def create
-    @deli = Deli.new(deli_params)
+    @deli = DelisTag.new(deli_params)
     if @deli.save
       redirect_to root_path
     else
@@ -45,7 +45,7 @@ class DelisController < ApplicationController
   private
 
   def deli_params
-    params.require(:deli).permit(:name, :text, :category_id, :supermarket_id, :image).merge(user_id: current_user.id)
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
   end
 
   def deli_find
@@ -53,6 +53,8 @@ class DelisController < ApplicationController
   end
 
   def user_check
-    redirect_to deli_path(@deli.id) if current_user.id != @deli.user_id
+    if current_user.id != @deli.user_id
+      redirect_to deli_path(@deli.id) 
+    end
   end
 end
