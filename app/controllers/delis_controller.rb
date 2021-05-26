@@ -2,19 +2,19 @@ class DelisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :deli_find, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :user_check, only: [:edit, :destroy, :confirm]
-  # before_action :search_deli
 
   def index
     @delis = Deli.includes(:user).order("created_at DESC")
   end
 
   def new
-    @deli = Deli.new
+    @deli = DelisTag.new
   end
 
   def create
-    @deli = Deli.new(deli_params)
-    if @deli.save
+    @deli = DelisTag.new(deli_params)
+    if @deli.valid?
+      @deli.save
       redirect_to root_path
     else
       render :new
@@ -45,7 +45,7 @@ class DelisController < ApplicationController
   private
 
   def deli_params
-    params.require(:deli).permit(:name, :text, :category_id, :supermarket_id, :image).merge(user_id: current_user.id)
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
   end
 
   def deli_find
@@ -53,6 +53,9 @@ class DelisController < ApplicationController
   end
 
   def user_check
-    redirect_to deli_path(@deli.id) if current_user.id != @deli.user_id
+    if current_user.id != @deli.user_id
+      redirect_to deli_path(@deli.id) 
+    end
   end
+
 end

@@ -33,8 +33,14 @@
       <%= link_to @deli.user.name,user_path(@deli.user.id), class:"deli-show-user" %>
     </div>
   </div>
-<span class="deli-show-text"><%= @deli.text %></span>
-<span class="deli-show-supermarket">購入場所：<%= @deli.supermarket.name %></span>
+  <span class="deli-show-text"><%= @deli.text %></span>
+  <span class="deli-show-supermarket">購入場所：<%= @deli.supermarket.name %></span>
+  <ul class="tags">
+    <li class="tag-list">
+    <% @deli.tags.each do |tag| %>
+      #<%=tag.tagname%>
+    <% end %>
+  </ul>
   </div>
 </div>
 
