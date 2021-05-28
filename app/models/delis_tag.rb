@@ -44,11 +44,11 @@ class DelisTag
   end
 
   def update
-    @form = Deli.where(deli_id: deli_id)
-    @form.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, tagname: tagname, user_id: user_id, deli_id: deli_id)
+    @form = Deli.where(id: deli_id)
+    @form.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, user_id: user_id)
     tag = Tag.where(tagname:tagname).first_or_initialize
     tag.save
-    DeliTagRelation.update(deli_id: deli.id, tag_id: tag.id)
+    DeliTagRelation.update(deli_id: deli_id, tag_id: tag.id)
   end
 
   # def to_model

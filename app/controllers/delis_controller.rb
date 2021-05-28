@@ -31,7 +31,7 @@ class DelisController < ApplicationController
     # binding.pry
     @form = DelisTag.new(deli_update_params)
     if @form.update
-      redirect_to deli_path(@form.id)
+      redirect_to deli_path(@deli.id)
     else
       render :edit
     end
