@@ -36,18 +36,18 @@ class DelisTag
     # end
 
     deli = Deli.create(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image:image, user_id:user_id)
-    tag = Tag.where(tagname:tagname).first_or_initialize
-    tag.save
+    # tag_list.each do |name|
+      tag = Tag.where(tagname:tagname).first_or_initialize
+      tag.save
+    # end
     DeliTagRelation.create(deli_id: deli.id, tag_id: tag.id)
   end
 
-  def update
-    ActiveRecord::Base.transaction do
-      tags = tagname.split(',').map { |tag| Tag.find_or_create_by(taganame: tag) }  
-      @form.update!(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, tagname: tagname)
-    end
-  rescue ActiveRecord::RecordInvalid
-    false
+  def update(params)
+    @form.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, tagname: tagname, user_id: user_id)
+    tag = Tag.where(tagname:tagname).first_or_initialize
+    tag.save
+    DeliTagRelation.update(deli_id: deli.id, tag_id: tag.id)
   end
 
   # def to_model
