@@ -44,6 +44,7 @@ class DelisTag
   end
 
   def update(params)
+    @form = Deli.where(deli_id: deli.id)
     @form.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, tagname: tagname, user_id: user_id)
     tag = Tag.where(tagname:tagname).first_or_initialize
     tag.save
