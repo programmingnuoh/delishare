@@ -8,13 +8,14 @@ class DelisController < ApplicationController
   end
 
   def new
-    @deli = DelisTag.new
+    @form = DelisTag.new
   end
 
   def create
-    @deli = DelisTag.new(deli_params)
-    if @deli.valid?
-      @deli.save
+    @form = DelisTag.new(deli_params)
+    # tag_list = params[:deli][:tagname].split(',')
+    if @form.valid?
+      @form.save
       redirect_to root_path
     else
       render :new
@@ -22,11 +23,14 @@ class DelisController < ApplicationController
   end
 
   def edit
+    @tag_list = @deli.tags.pluck(:tagname).join(",")
+    # @form = DelisTag.new(params)
   end
 
   def update
-    if @deli.update(deli_params)
-      redirect_to deli_path(@deli.id)
+    @form = DelisTag.new(deli_update_params)
+    if @form.save
+      redirect_to deli_path(@form.id)
     else
       render :edit
     end
@@ -39,13 +43,17 @@ class DelisController < ApplicationController
   end
 
   def destroy
-    @deli.destroy
+    @form.destroy
   end
 
   private
 
   def deli_params
     params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
+  end
+
+  def deli_update_params
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id, deli_id: params[:id])    
   end
 
   def deli_find

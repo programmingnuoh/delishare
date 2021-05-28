@@ -1,5 +1,62 @@
 <%= render "shared/header" %>
 
-<%= render partial:"form", locals: {deli:@deli} %>
+<div class="deli-new-form">
+<%= form_with model: @deli, local: true do |f|%>
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :name, "お惣菜名" %>
+    </div>
+    <%= f.text_field :name, class:"deli-form" %>
+  </div>
 
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :text, "説明" %>
+    </div>
+    <%= f.text_area :text, class:"deli-form" %>
+  </div>
+
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :category_id, "カテゴリ" %>
+    </div>
+    <div class="categories-radio">
+      <div class="category-radio">
+        <%= f.radio_button :category_id, '1' %>
+        <%= f.label :category_id, '惣菜紹介', value: 1 %>
+      </div>
+      <div class="category-radio">
+        <%= f.radio_button :category_id, '2' %>
+        <%= f.label :category_id, 'アレンジレシピ', value: 2 %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :supermarket_id, "購入した店舗" %>
+    </div>
+    <%= f.collection_select(:supermarket_id, Supermarket.all, :id, :name, {prompt:'--------'},{class:"select-box", id:"deli-supermarket"}) %>
+  </div>
+
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :image, "画像" %>
+    </div>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <div class="post-label">
+      <%= f.label :tagname, "タグネーム" %>
+    </div>
+    <%= f.text_area :tagname, value: @tag_list, class:"deli-form" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "投稿する", class:"form__btn"  %>
+  </div>
+<% end %>
+</div>
 <%= render "shared/footer" %>
