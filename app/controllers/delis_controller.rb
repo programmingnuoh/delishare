@@ -49,11 +49,11 @@ class DelisController < ApplicationController
   private
 
   def deli_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagnames).merge(user_id: current_user.id)
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
   end
 
   def deli_update_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagnames).merge(user_id: current_user.id, deli_id: params[:id])    
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id, deli_id: params[:id])    
   end
 
   def deli_find
