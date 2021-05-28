@@ -1,19 +1,19 @@
 <%= render "shared/header" %>
 
 <div class="deli-new-form">
-<%= form_with model: @deli, local: true do |f|%>
+<%= form_with model: [@deli, @form], url: deli_path, method: :patch, local: true do |f|%>
   <div class="field">
     <div class="post-label">
       <%= f.label :name, "お惣菜名" %>
     </div>
-    <%= f.text_field :name, class:"deli-form" %>
+    <%= f.text_field :name, value: @deli.name, class:"deli-form" %>
   </div>
 
   <div class="field">
     <div class="post-label">
       <%= f.label :text, "説明" %>
     </div>
-    <%= f.text_area :text, class:"deli-form" %>
+    <%= f.text_area :text, value: @deli.text, class:"deli-form" %>
   </div>
 
   <div class="field">
@@ -36,14 +36,14 @@
     <div class="post-label">
       <%= f.label :supermarket_id, "購入した店舗" %>
     </div>
-    <%= f.collection_select(:supermarket_id, Supermarket.all, :id, :name, {prompt:'--------'},{class:"select-box", id:"deli-supermarket"}) %>
+    <%= f.collection_select(:supermarket_id, Supermarket.all, :id, :name, {prompt:'--------'},{class:"select-box", id:"deli-supermarket", value:@deli.supermarket_id}) %>
   </div>
 
   <div class="field">
     <div class="post-label">
       <%= f.label :image, "画像" %>
     </div>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, value: @deli.image %>
   </div>
 
   <div class="field">

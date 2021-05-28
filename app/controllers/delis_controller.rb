@@ -24,12 +24,13 @@ class DelisController < ApplicationController
 
   def edit
     @tag_list = @deli.tags.pluck(:tagname).join(",")
-    # @form = DelisTag.new(params)
+    @form = DelisTag.new
   end
 
   def update
+    # binding.pry
     @form = DelisTag.new(deli_update_params)
-    if @form.update(deli_update_params)
+    if @form.update
       redirect_to deli_path(@form.id)
     else
       render :edit
