@@ -28,7 +28,6 @@ class DelisController < ApplicationController
   end
 
   def update
-    # binding.pry
     @form = DelisTag.new(deli_update_params)
     if @form.update
       redirect_to deli_path(@deli.id)
@@ -44,7 +43,7 @@ class DelisController < ApplicationController
   end
 
   def destroy
-    @form.destroy
+    @deli.destroy
   end
 
   private
