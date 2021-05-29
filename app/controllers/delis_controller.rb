@@ -24,12 +24,13 @@ class DelisController < ApplicationController
 
   def edit
     @tag_list = @deli.tags.pluck(:tagname).join(",")
-    @form = DelisTag.new
+    @form = DelisTag.new(deli: @deli)
   end
 
   def update
-    @form = DelisTag.new(deli_update_params)
-    if @form.update
+    @form = DelisTag.new(deli_update_params, deli:@deli)
+    tag_list = params[:delis_tag][:tagname].split(",")
+    if @form.update(tag_list)
       redirect_to deli_path(@deli.id)
     else
       render :edit
@@ -53,7 +54,7 @@ class DelisController < ApplicationController
   end
 
   def deli_update_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, tagname:[]).merge(user_id: current_user.id, deli_id: params[:id])    
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id, deli_id: params[:id])    
   end
 
   def deli_find
