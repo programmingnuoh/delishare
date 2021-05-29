@@ -13,9 +13,9 @@ class DelisController < ApplicationController
 
   def create
     @form = DelisTag.new(deli_params)
-    # tag_list = params[:delis_tag][:tagname].split(",")
+    tag_list = params[:delis_tag][:tagname].split(",")
     if @form.valid?
-      @form.save
+      @form.save(tag_list)
       redirect_to root_path
     else
       render :new
@@ -49,11 +49,11 @@ class DelisController < ApplicationController
   private
 
   def deli_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, tagname:[]).merge(user_id: current_user.id)
   end
 
   def deli_update_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id, deli_id: params[:id])    
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, tagname:[]).merge(user_id: current_user.id, deli_id: params[:id])    
   end
 
   def deli_find
