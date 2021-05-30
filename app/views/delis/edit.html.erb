@@ -41,9 +41,10 @@
 
   <div class="field">
     <div class="post-label">
-      <%= f.label :image, "画像" %>
+      <%= f.label :image, "画像（もう一度アップロードをお願いします）" %>
     </div>
-    <%= f.file_field :image, value: @deli.image %>
+    <%= f.file_field :image %>
+    <%# <%= image_tag @deli.image %>
   </div>
 
   <div class="field">
@@ -55,7 +56,7 @@
 
 
   <div class="actions">
-    <%= f.submit "投稿する", class:"form__btn"  %>
+    <%= f.submit "投稿する", class:"form__btn", id:"form__btn"  %>
   </div>
 <% end %>
 </div>

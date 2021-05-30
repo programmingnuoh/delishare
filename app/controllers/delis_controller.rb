@@ -28,8 +28,9 @@ class DelisController < ApplicationController
   end
 
   def update
-    @form = DelisTag.new(deli_update_params, deli:@deli)
+    @form = DelisTag.new(deli_update_params, deli: @deli)
     tag_list = params[:delis_tag][:tagname].split(",")
+    # render json:{ deli: @form}
     if @form.update(tag_list)
       redirect_to deli_path(@deli.id)
     else
