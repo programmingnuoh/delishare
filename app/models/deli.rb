@@ -9,8 +9,8 @@ class Deli < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Deli.where('name LIKE(?)', "%#{search}%")
-      Deli.where('text LIKE(?)', "%#{search}%")
+      Deli.includes(:tags).where('name LIKE ? OR text LIKE ? OR tagname LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%").references(:tags)
+      # Deli.includes(:tags).where('deli.name LIKE ? OR deli.text LIKE ? OR tags.tagname LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%").references(:tags)
     else
       Deli.all
     end

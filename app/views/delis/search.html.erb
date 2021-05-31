@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <p class="search-title">検索結果</p>
   <ul class="deli-wrapper">
-    <% @search_delis.each do |deli| %>  
+    <% @search.each do |deli| %>  
       <li class="deli-list">
         <%= render partial:"delis/deli", locals: {deli:deli} %>
       </li>
