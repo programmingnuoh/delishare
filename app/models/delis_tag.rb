@@ -9,28 +9,70 @@ class DelisTag
     validates :image
   end
 
-  def save
-    deli = Deli.create(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image:image, user_id:user_id)
-    tag = Tag.where(tagname:tagname).first_or_initialize
-    tag.save
-    DeliTagRelation.create(deli_id: deli.id, tag_id: tag.id)
+  delegate :persisted?, to: :deli
+
+  def initialize(attributes = nil, deli: Deli.new)
+    @deli = deli
+    attributes ||= default_attributes
+    super(attributes)
   end
 
-  # def update(tag_list)
-  #   ActiveRecord::Base.transaction do
-  #     @deli.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image:image, user_id:user_id)
+  def save(tag_list)
+    deli = Deli.create(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image:image, user_id:user_id)
+    tag_list.each do |new_tag|
+      deli_tag = Tag.find_or_create_by(tagname: new_tag)
+      deli.tags << deli_tag
+    end
 
-  #     @deli.deli_tags.each do |tag|
-  #       tag.delete
-  #     end
-  #     tag_list.each do |tagname|
-  #       tag = Tag.where(tagname:tagname).first_or_initialize
-  #       tag.save
+    DeliTagRelation.create(deli_id: deli.id, tag_id: tag_id)
+  end
 
-  #       deli_tag = DeliTagRelation.where(deli_tag: @deli.tag, tag_id: tag.id).first_or_initialize
-  #       deli_tag.update(deli_id: @deli.id, tag_id: tag.id)
-  #     end
-  #   end
+  def update(tag_list)
+    ActiveRecord::Base.transaction do
+      # @deli = Deli.where(id: deli_id)
+      @deli.update(name: name, text: text, category_id: category_id, supermarket_id: supermarket_id, image: image, user_id: user_id)
+      current_tags = @deli.tags.pluck(:tagname) unless @deli.tags.nil?
+      old_tags = current_tags - tag_list
+      new_tags = tag_list - current_tags
+
+      old_tags.each do |old_name|
+        @deli.tags.delete Tag.find_by(tagname: old_name)
+      end
+
+      new_tags.each do |new_name|
+        deli_tag = Tag.find_or_create_by(tagname: new_name)
+        @deli.tags << deli_tag 
+        deli_tag_relation = DeliTagRelation.where(deli_id: @deli.id, tag_id: deli_tag.id).first_or_initialize
+        deli_tag_relation.update(deli_id: @deli.id, tag_id: deli_tag.id)
+      end
+    end
+  end
+
+  def destroy
+    form = Deli.where(id: deli_id)
+    form.destroy
+  end
+
+  # def to_model
+  #   deli
+  # end
+
+  private
+
+  attr_reader :deli, :tag
+  def default_attributes
+    {
+      name: deli.name,
+      text: deli.text,
+      category_id: deli.category_id,
+      supermarket_id: deli.supermarket_id,
+      # image: deli.image.attach(deli[:image]),
+      tagname: deli.tags.pluck(:tagname).join(',')
+    }
+  end
+
+  # def persisted?
+  #   @deli.persisted?
   # end
 
 end

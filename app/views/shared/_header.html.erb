@@ -2,8 +2,8 @@
   <%= link_to image_tag("オリジナルアプリロゴ.png", class:"app-icon"), root_path %>
   <div class='nav'>
     <div class="search-field">
-      <%= search_form_for @search, url: search_delis_path, class: "search-form" do |f| %>
-      <%= f.text_field :name_cont, placeholder: "キーワード", class: "search-keyword" %>
+      <%= search_form_for @p, url: search_delis_path, local:true, method: :get, class: "search-form" do |f| %>
+      <%= f.text_field :name_or_text_or_tags_tagname_cont, placeholder: "キーワード", class: "search-keyword" %>
       <div class="search-pulldown", id="search-pulldown">▼</div>
       <ul class="hidden-pulldown", id="hidden-pulldown">
         <li class="pulldown-form"><%= f.label :category_id_eq, "カテゴリー", class:"label-pulldown" %><%= f.collection_select :category_id_eq, @categories, :id, :name, include_blank: '指定なし' %>

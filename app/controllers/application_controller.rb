@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_deli
-    @search = Deli.ransack(params[:q])
-    @search_delis = @search.result
+    @p = Deli.ransack(params[:q])
     @categories = Category.all
     @supermarkets = Supermarket.all
   end

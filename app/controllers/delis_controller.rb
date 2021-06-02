@@ -8,13 +8,14 @@ class DelisController < ApplicationController
   end
 
   def new
-    @deli = DelisTag.new
+    @form = DelisTag.new
   end
 
   def create
-    @deli = DelisTag.new(deli_params)
-    if @deli.valid?
-      @deli.save
+    @form = DelisTag.new(deli_params)
+    tag_list = params[:delis_tag][:tagname].split(",")
+    if @form.valid?
+      @form.save(tag_list)
       redirect_to root_path
     else
       render :new
@@ -22,10 +23,15 @@ class DelisController < ApplicationController
   end
 
   def edit
+    @tag_list = @deli.tags.pluck(:tagname).join(",")
+    @form = DelisTag.new(deli: @deli)
   end
 
   def update
-    if @deli.update(deli_params)
+    @form = DelisTag.new(deli_update_params, deli: @deli)
+    tag_list = params[:delis_tag][:tagname].split(",")
+    # render json:{ deli: @form}
+    if @form.update(tag_list)
       redirect_to deli_path(@deli.id)
     else
       render :edit
@@ -42,10 +48,19 @@ class DelisController < ApplicationController
     @deli.destroy
   end
 
+  def search
+    @p = Deli.search(search_params)
+    @results = @p.result(distinct: true).includes(:category, :tags)
+  end
+
   private
 
   def deli_params
-    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id)
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, tagname:[]).merge(user_id: current_user.id)
+  end
+
+  def deli_update_params
+    params.require(:delis_tag).permit(:name, :text, :category_id, :supermarket_id, :image, :tagname).merge(user_id: current_user.id, deli_id: params[:id])    
   end
 
   def deli_find
@@ -56,6 +71,10 @@ class DelisController < ApplicationController
     if current_user.id != @deli.user_id
       redirect_to deli_path(@deli.id) 
     end
+  end
+
+  def search_params
+    params.require(:q).permit(:name_or_text_or_tags_tagname_cont, :category_id_eq, :supermarket_id_eq => [])
   end
 
 end
