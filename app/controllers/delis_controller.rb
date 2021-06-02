@@ -48,6 +48,11 @@ class DelisController < ApplicationController
     @deli.destroy
   end
 
+  def search
+    @p = Deli.search(search_params)
+    @results = @p.result(distinct: true).includes(:category, :tags)
+  end
+
   private
 
   def deli_params
@@ -66,6 +71,10 @@ class DelisController < ApplicationController
     if current_user.id != @deli.user_id
       redirect_to deli_path(@deli.id) 
     end
+  end
+
+  def search_params
+    params.require(:q).permit(:name_or_text_or_tags_tagname_cont, :category_id_eq, :supermarket_id_eq => [])
   end
 
 end
