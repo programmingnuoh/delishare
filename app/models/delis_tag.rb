@@ -6,7 +6,6 @@ class DelisTag
     validates :name
     validates :text
     validates :supermarket_id
-    validates :image
   end
 
   delegate :persisted?, to: :deli

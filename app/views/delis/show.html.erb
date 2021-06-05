@@ -14,7 +14,11 @@
     <% end %>
   </div>
   <div class="deli-image-content">
-    <%= image_tag @deli.image, class:"deli-show-image" %>
+    <% if @deli.image.present? %>
+      <%= image_tag @deli.image, class:"deli-show-image" %>
+    <% else %>
+      <div class="deli-show-image"></div>
+    <% end %>
   </div>
   <div class="deli-post-info">
     <h2 class="deli-show-name">

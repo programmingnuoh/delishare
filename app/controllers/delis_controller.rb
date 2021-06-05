@@ -30,7 +30,6 @@ class DelisController < ApplicationController
   def update
     @form = DelisTag.new(deli_update_params, deli: @deli)
     tag_list = params[:delis_tag][:tagname].split(",")
-    # render json:{ deli: @form}
     if @form.update(tag_list)
       redirect_to deli_path(@deli.id)
     else
@@ -49,7 +48,7 @@ class DelisController < ApplicationController
   end
 
   def search
-    @p = Deli.search(search_params)
+    @p = Deli.ransack(params[:q])
     @results = @p.result(distinct: true).includes(:category, :tags)
   end
 
@@ -71,10 +70,6 @@ class DelisController < ApplicationController
     if current_user.id != @deli.user_id
       redirect_to deli_path(@deli.id) 
     end
-  end
-
-  def search_params
-    params.require(:q).permit(:name_or_text_or_tags_tagname_cont, :category_id_eq, :supermarket_id_eq => [])
   end
 
 end
