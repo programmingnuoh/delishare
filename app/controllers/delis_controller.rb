@@ -4,7 +4,7 @@ class DelisController < ApplicationController
   before_action :user_check, only: [:edit, :destroy, :confirm]
 
   def index
-    @delis = Deli.includes(:user).order("created_at DESC")
+    @delis = Deli.includes(:user).order("created_at DESC").limit(6)
   end
 
   def new

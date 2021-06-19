@@ -2,11 +2,20 @@
 
 <main class="main">
   <div class="inner">
-  <% if user_signed_in? %>
-    <div class="new-deli">
-      <%= link_to "New Deli", new_deli_path, method: :get, class: :nav__btn %>
-    </div>
-  <% end %>
+  <div class="main-content">
+    <p class="main-message">
+      好きなお惣菜を<br />共有しよう！
+    </p>
+  </div>
+  <div class="site-overview">
+    <p class="site-message">
+      お気に入りのお惣菜、偶然見つけたお惣菜、<br />
+      アレンジしたお惣菜…。<br />
+      あなたが食べたお惣菜を、みんなでシェアしませんか？
+    </p>
+  </div>
+  <div class="deli-introduction">
+    <h3 class="introduction-title">新しい お惣菜</h3>
     <ul class="deli-wrapper">
     <% @delis.each do |deli| %>  
       <li class="deli-list">
@@ -14,6 +23,7 @@
       </li>
     <% end %>
     </ul>
+  </div>
   </div>
 </main>
 

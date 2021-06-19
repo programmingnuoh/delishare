@@ -14,11 +14,12 @@
     </div>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to 'マイページ', user_path(current_user), class: "user-name" %> </li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
+        <li><%= link_to "New Deli", new_deli_path, method: :get, class: "header-btn nav-btn header-btn-shadow" %></li>
+        <li><%= link_to 'マイページ', user_path(current_user), class: "header-btn user-name header-btn-shadow" %> </li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-btn logout header-btn-shadow" %> </li>
       <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "header-btn login header-btn-shadow" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "header-btn sign-up header-btn-shadow" %></li>
       <% end %>
     </ul>
   </div>
