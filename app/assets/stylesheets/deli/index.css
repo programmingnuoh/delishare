@@ -8,21 +8,118 @@
 
 .main-message{
     font-size: 72px;
-    color: #595757;
+    color: whitesmoke;
+    text-shadow: 3px 3px 5px #595757;
+}
+
+.message-fade{
+    animation-name: fadeIn;
+    animation-fill-mode: backwards;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
 }
 
 .site-message{
-    margin: 100px auto;
+    margin: 80px auto;
     text-align: center;
     font-size: 24px;
 }
 
-.deli-introduction{
+.message-line{
+    position: relative;
+}
 
+.message-line:before,
+.message-line:after{
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #a2cb39;
+    border-radius: 10px;
+
+    transition: all 2s linear;
+    transition-delay: 0.2s;
+}
+
+.message-line:before{
+    right: 10vw;
+    top: 0;
+}
+
+.message-line:after{
+    left: 10vw;
+    bottom: 0;
+}
+
+.message-line span{
+    padding: 30px;
+    display: block;
+}
+
+.message-line span:before,
+.message-line span:after{
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 0;
+    background: #a2cb39;
+    border-radius: 10px;
+    transition: all 2s linear;
+}
+
+.message-line span:before{
+    left: 10vw;
+    top: 0;
+}
+
+.message-line span:after{
+    right: 10vw;
+    bottom: 0;
+}
+
+.message-line-appear:before,
+.message-line-appear:after{
+    width: 100%;
+}
+
+.message-line-appear span:before,
+.message-line-appear span:after{
+    height: 100%;
 }
 
 .introduction-title{
     margin-bottom: 20px;
     text-align: center;
     font-size: 48px;
+    position: relative;
+}
+
+.title-line:after{
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 30vw;
+
+    width: 40vw;
+    height: 5px;
+    background: #a2cb39;
+
+    transition: all 2s;
+    transform: scale(0,1);
+    transform-origin: center top;
+    animation-iteration-count: infinite;
+}
+
+.title-line-move:after{
+    transform: scale(1,1);
 }

@@ -3,19 +3,21 @@
 <main class="main">
   <div class="inner">
   <div class="main-content">
-    <p class="main-message">
+    <p class="main-message" id="main-message">
       好きなお惣菜を<br />共有しよう！
     </p>
   </div>
   <div class="site-overview">
-    <p class="site-message">
+    <p class="site-message message-line">
+      <span>
       お気に入りのお惣菜、偶然見つけたお惣菜、<br />
       アレンジしたお惣菜…。<br />
       あなたが食べたお惣菜を、みんなでシェアしませんか？
+      </span>
     </p>
   </div>
   <div class="deli-introduction">
-    <h3 class="introduction-title">新しい お惣菜</h3>
+    <h3 class="introduction-title title-line">新しい お惣菜</h3>
     <ul class="deli-wrapper">
     <% @delis.each do |deli| %>  
       <li class="deli-list">
