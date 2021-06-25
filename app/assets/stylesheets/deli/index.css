@@ -123,3 +123,42 @@
 .title-line-move:after{
     transform: scale(1,1);
 }
+
+.deli-fadeUp{
+    animation-name: fadeUpAnime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime{
+    from{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to{
+      opacity: 100;
+      transform: translateY(0);
+    }
+}
+
+.post-together{
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+.lets-post{
+    font-size: 24px;
+}
+
+.signin-or-up{
+    width: 250px;
+}
+
+.index-signin,.index-signup{
+    text-decoration: none;
+    margin: 10px;
+    /* padding: 30px; */
+    border: 2px solid #ffe23f;
+}
