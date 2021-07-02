@@ -14,8 +14,7 @@
       <%= link_to deli.name, deli_path(deli.id), class:"deli-name" %>
       <div class="deli-little-summary">
         <p class="deli-user">
-          <%= deli.user.name %>
-          <%# <%= link_to deli.user, user_path(user.id), class:"deli-user-name" %>
+          <%= link_to deli.user.name, user_path(deli.user_id), class:"deli-user-name" %>
         </p>
         <p class="deli-category">
           <%= deli.category.name %>
