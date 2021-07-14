@@ -1,12 +1,13 @@
 .main-content{
-    height: 750px;
-    padding-left: 10vw;
-    padding-top: 15vw;
-    background:url('sign_in.jpg');
-    background-size: cover;
+    height: 700px;
+    width: 100%;
+    position: relative;
 }
 
 .main-message{
+    position: absolute;
+    top: 20vw;
+    left: 10vw;
     font-size: 72px;
     color: whitesmoke;
     text-shadow: 3px 3px 5px #595757;
