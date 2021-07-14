@@ -2,7 +2,7 @@
     height: 750px;
     padding-left: 10vw;
     padding-top: 15vw;
-    background-image: url('sign_in.jpg');
+    background:url('sign_in.jpg');
     background-size: cover;
 }
 
