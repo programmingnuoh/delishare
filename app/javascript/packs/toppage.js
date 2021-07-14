@@ -9,7 +9,7 @@ function messageLine(){
           $(this).removeClass('message-line-appear')
         }
 });
-}
+};
 
 function titleLine(){
     $('.introduction-title').each(function(){
@@ -22,7 +22,7 @@ function titleLine(){
           $(this).removeClass('title-line-move')
         }
     });
-}
+};
 
 function deliFade(){
     $('.deli-list').each(function(){
@@ -35,7 +35,7 @@ function deliFade(){
           $(this).removeClass('deli-fadeUp')
         }
     });
-}
+};
 
 $(window).on('load', function(){
   $('.main-message').each(function(){

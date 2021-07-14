@@ -6,10 +6,31 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "4.3.0",
+    "jquery": "^3.6.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "description": "## アプリケーション概要 　このアプリケーションでは、スーパーマーケットやコンビニエンスストアで購入した惣菜を共有することができます。投稿には、タイトル、説明文、カテゴリーや購入した店舗の選択、画像投稿、タグの入力が必要です。記事を投稿した本人は投稿を編集したり削除したりすることが可能です。トップページや投稿されている記事の閲覧はログインの有無に関わらず可能です。</br> 　このアプリケーションには、検索機能がついています。ヘッダーにある検索フォームにキーワードを入力すると、タイトル・本文・タグの内容でヒットする投稿を検索することができます。また、矢印をクリックするとカテゴリー/スーパーマーケットを選択するプルダウンがあります。各プルダウンで選択後に検索すると、該当の投稿を探すことができます。</br>",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programmingnuoh/delishare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programmingnuoh/delishare/issues"
+  },
+  "homepage": "https://github.com/programmingnuoh/delishare#readme"
 }
